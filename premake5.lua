@@ -1,21 +1,9 @@
+common_deps_dir = "D:/workspace/common_deps/"
+reps_dir = "D:/workspace/reps/"
+
 workspace "Workspace"
 	configurations {"Debug", "Release"}
 	location "./build"
-    
-    common_deps_dir = "D:/workspace/common_deps/"
-    reps_dir = "D:/workspace/"
-
-	includedirs {
-        common_deps_dir .. "boost_1_64_0",
-        common_deps_dir .. "googletest/googletest/include",
-		common_deps_dir .. "googletest/googlemock/include",
-        reps_dir .. "gtest_wrapper/include",
-	}
-	
-	libdirs {
-        common_deps_dir .. "boost_1_64_0/stage/lib",
-		common_deps_dir .. "googletest/lib",
-	}
     
     filter "configurations:Debug"
 		targetsuffix "_d"
@@ -44,9 +32,18 @@ project "RandomTest"
 	kind "ConsoleApp"
 	targetdir "./bin"
 	
-	includedirs {
-		"./include",
-	}	
+    includedirs {    
+        common_deps_dir .. "boost_1_64_0",
+        common_deps_dir .. "googletest/googletest/include",
+		common_deps_dir .. "googletest/googlemock/include",
+        reps_dir .. "gtest_wrapper/include",
+        "./include",
+	}
+	
+	libdirs {
+        common_deps_dir .. "boost_1_64_0/stage/lib",
+		common_deps_dir .. "googletest/lib",
+	}
 	
 	files {
 		"./tests/main.cpp",
