@@ -4,7 +4,7 @@
 #include <string>
 #include <random>
 
-namespace fisherman {
+namespace random {
 	typedef std::mt19937 DefaultGenerator;
 
 	class SeedProvider {

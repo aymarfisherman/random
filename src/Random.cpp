@@ -1,6 +1,6 @@
 #include "Random.h"
 
-namespace fisherman {
+namespace random {
 	SeedProvider::SeedProvider(unsigned int seed) : generator(seed) {}
 
 	unsigned int SeedProvider::getSeed() const {
