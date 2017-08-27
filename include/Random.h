@@ -1,6 +1,7 @@
 #pragma once
 
 #include <vector>
+#include <list>
 #include <string>
 #include <random>
 
@@ -54,10 +55,22 @@ namespace random {
 		return distribution(seedProvider->getGenerator());
 	}	
 
+	template<typename Type_> static const Type_& randomSelect(const std::list<Type_>& values, SeedProvider* seedProvider = nullptr) {
+		if (values.empty()) {
+			throw std::runtime_error("randomSelect received an empty container");
+		}
+		auto pos = randomInt(0, values.size() - 1, seedProvider);
+		auto iter = values.begin();
+		for (auto i = 0; i < pos; ++i) {
+			iter++;
+		}
+		return *iter;
+	}
+
 	template<typename Type_> static const Type_& randomSelect(const std::vector<Type_>& values, SeedProvider* seedProvider = nullptr) {
 		if (values.empty()) {
 			throw std::runtime_error("randomSelect received an empty container");
-		}		
+		}
 		return values[randomInt(0, values.size() - 1, seedProvider)];
 	}
 

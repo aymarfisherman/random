@@ -20,8 +20,19 @@ TEST(UtilsTests, RandomAlphanumericStringTest) {
 	EXPECT_TRUE(randomPassword.size() >= 6 && randomPassword.size() <= 15);
 }
 
-TEST(UtilsTests, RandomSelectTest) {
+TEST(UtilsTests, RandomVectorTest) {
 	std::vector<int> options;
+	options.push_back(10);
+	options.push_back(20);
+	options.push_back(30);
+	options.push_back(40);
+
+	auto value = random::randomSelect(options);
+	EXPECT_TRUE(value == 10 || value == 20 || value == 30 || value == 40);
+}
+
+TEST(UtilsTests, RandomListTest) {
+	std::list<int> options;
 	options.push_back(10);
 	options.push_back(20);
 	options.push_back(30);
